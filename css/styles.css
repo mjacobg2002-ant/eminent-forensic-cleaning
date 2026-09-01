@@ -179,7 +179,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 
 .nav__cta{ display:flex; align-items:center; gap:16px; flex:0 0 auto; }
 .phone-link{
-  display:inline-flex; align-items:center; gap:7px; font-weight:700; font-size:.9rem; color:var(--txt-light);
+  display:none; align-items:center; gap:7px; font-weight:700; font-size:.9rem; color:var(--txt-light);
 }
 .nav.solid .phone-link{ color:var(--ink); }
 .phone-link:hover{ color:var(--accent-soft); }
@@ -302,17 +302,17 @@ ul,ol{ margin:0; padding:0; list-style:none; }
     linear-gradient(160deg, #161c26, #0e131b);
 }
 .services__visual-card{ position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:34px; transition:opacity .5s ease; }
-.services__visual-card::after{
-  content:""; position:absolute; inset:0; z-index:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-  background-size:40px 40px; opacity:.5;
-  mask-image:radial-gradient(80% 80% at 40% 30%, #000, transparent 75%);
-  -webkit-mask-image:radial-gradient(80% 80% at 40% 30%, #000, transparent 75%);
+.svc-art{
+  position:absolute; inset:0; width:100%; height:100%; z-index:0;
+  opacity:.92;
 }
-.services__visual-num{ position:relative; z-index:1; font-size:clamp(4rem,10vw,7rem); font-weight:800; color:rgba(255,255,255,.1); letter-spacing:-.04em; line-height:1; }
-.services__visual-label{ position:relative; z-index:1; font-size:1.15rem; font-weight:700; color:var(--brass); letter-spacing:.02em; margin-top:8px; }
+.svc-art + .services__visual-num{ margin-top:0; }
+.services__visual-card::after{
+  content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(180deg, rgba(13,17,25,.05) 0%, rgba(13,17,25,.35) 55%, rgba(13,17,25,.86) 100%);
+}
+.services__visual-num{ position:relative; z-index:2; font-size:clamp(4rem,10vw,7rem); font-weight:800; color:rgba(255,255,255,.14); letter-spacing:-.04em; line-height:1; }
+.services__visual-label{ position:relative; z-index:2; font-size:1.15rem; font-weight:700; color:var(--brass); letter-spacing:.02em; margin-top:8px; text-shadow:0 2px 12px rgba(0,0,0,.5); }
 
 .services__list{ display:flex; flex-direction:column; }
 .svc{ border-top:1px solid var(--line); }
@@ -606,17 +606,14 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 /* =========================================================
    RESPONSIVE
    ========================================================= */
-/* Tight-desktop: drop the redundant phone text (still in the top bar) to give the links room */
-@media (max-width:1180px){
-  .phone-link{ display:none; }
+/* Collapse the desktop nav to the hamburger while there's still comfortable room */
+@media (max-width:1140px){
+  .nav__links{ display:none; }
+  .nav__toggle{ display:block; }
+  .nav__cta .btn--emergency{ display:none; }
 }
 
 @media (max-width:1024px){
-  .nav__links{ display:none; }
-  .nav__toggle{ display:block; }
-  .btn--emergency.nav-emergency{ display:none; }
-  .nav__cta .btn--emergency{ display:none; }
-  .phone-link{ display:none; }
   .trust-strip__inner{ grid-template-columns:repeat(3,1fr); row-gap:24px; }
   .intro__inner{ grid-template-columns:1fr; }
   .services__layout{ grid-template-columns:1fr; }
