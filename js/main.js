@@ -75,10 +75,6 @@
         showVisual(i);
       }
     });
-    var summary = item.querySelector('summary');
-    if (summary) {
-      summary.addEventListener('mouseenter', function () { if (!reduce) showVisual(i); });
-    }
   });
 
   /* ---------- Contact form (concept — no backend) ---------- */
