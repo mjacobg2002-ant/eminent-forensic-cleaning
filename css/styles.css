@@ -145,7 +145,8 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 }
 .nav__inner{
   max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter); height:100%;
-  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+  flex-wrap:nowrap;
 }
 .nav.solid{
   background:rgba(247,246,243,.92);
@@ -155,17 +156,17 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   box-shadow:0 6px 24px -18px rgba(0,0,0,.5);
 }
 
-.brand{ display:inline-flex; align-items:center; gap:12px; color:var(--txt-light); }
+.brand{ display:inline-flex; align-items:center; gap:12px; color:var(--txt-light); flex:0 0 auto; }
 .nav.solid .brand{ color:var(--ink); }
 .brand__mark{ display:inline-flex; }
 .brand__text{ display:flex; flex-direction:column; line-height:1; }
 .brand__name{ font-weight:800; font-size:1.12rem; letter-spacing:-.01em; }
 .brand__sub{ font-size:.66rem; letter-spacing:.24em; text-transform:uppercase; opacity:.72; margin-top:3px; }
 
-.nav__links{ display:flex; gap:30px; }
+.nav__links{ display:flex; gap:clamp(18px,2.4vw,32px); flex:1 1 auto; justify-content:center; flex-wrap:nowrap; min-width:0; }
 .nav__links a{
   font-size:.92rem; font-weight:600; color:var(--txt-light-2); position:relative; padding:4px 0;
-  transition:color .2s ease;
+  transition:color .2s ease; white-space:nowrap;
 }
 .nav.solid .nav__links a{ color:var(--txt-mid); }
 .nav__links a::after{
@@ -176,7 +177,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .nav.solid .nav__links a:hover{ color:var(--ink); }
 .nav__links a:hover::after{ right:0; }
 
-.nav__cta{ display:flex; align-items:center; gap:16px; }
+.nav__cta{ display:flex; align-items:center; gap:16px; flex:0 0 auto; }
 .phone-link{
   display:inline-flex; align-items:center; gap:7px; font-weight:700; font-size:.9rem; color:var(--txt-light);
 }
@@ -605,6 +606,11 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 /* =========================================================
    RESPONSIVE
    ========================================================= */
+/* Tight-desktop: drop the redundant phone text (still in the top bar) to give the links room */
+@media (max-width:1180px){
+  .phone-link{ display:none; }
+}
+
 @media (max-width:1024px){
   .nav__links{ display:none; }
   .nav__toggle{ display:block; }
