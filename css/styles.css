@@ -304,9 +304,9 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .services__visual-card{ position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:34px; transition:opacity .5s ease; }
 .svc-art{
   position:absolute; inset:0; width:100%; height:100%; z-index:0;
-  opacity:.92;
+  object-fit:cover; object-position:center;
+  filter:saturate(.9) contrast(1.02);
 }
-.svc-art + .services__visual-num{ margin-top:0; }
 .services__visual-card::after{
   content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
   background:linear-gradient(180deg, rgba(13,17,25,.05) 0%, rgba(13,17,25,.35) 55%, rgba(13,17,25,.86) 100%);
