@@ -302,6 +302,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
     linear-gradient(160deg, #161c26, #0e131b);
 }
 .services__visual-card{ position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:34px; transition:opacity .5s ease; }
+.services__visual-card[hidden]{ display:none; }
 .svc-art{
   position:absolute; inset:0; width:100%; height:100%; z-index:0;
   object-fit:cover; object-position:center;
